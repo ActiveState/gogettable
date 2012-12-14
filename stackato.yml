@@ -1,0 +1,6 @@
+name: gopkg
+
+framework: buildpack
+
+mem: 64M
+
