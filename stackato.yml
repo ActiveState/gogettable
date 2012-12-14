@@ -2,5 +2,5 @@ name: gopkg
 
 framework: buildpack
 
-mem: 64M
+mem: 32M
 
