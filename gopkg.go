@@ -22,6 +22,6 @@ func main() {
 }
 
 func getMetaTag(name string) string {
-	return fmt.Sprintf("<meta name=\"go-import\" content=\"gopkg.iprod.activestate.com/%s git gitolite@gitolite.activestate.com:%s.git\">",
+	return fmt.Sprintf("<meta name=\"go-import\" content=\"gopkg.iprod.activestate.com/%s git ssh://gitolite@gitolite.activestate.com/%s\">",
 		name, name)
 }
