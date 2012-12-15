@@ -10,10 +10,10 @@ import (
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/{name}", func(w http.ResponseWriter, r *http.Request) {
-		vars := mux.Vars(r)
-		fmt.Fprintf(w, "<html><head>%s</head></html>", getMetaTag(vars["name"]))
-	})
+	// HACK: we really want to match /name/*
+	router.HandleFunc("/{name}", Handler)
+	router.HandleFunc("/{name}/{y}", Handler)
+	router.HandleFunc("/{name}/{y}/{z}", Handler)
 	http.Handle("/", router)
 
 	addr := ":" + os.Getenv("PORT")
@@ -21,7 +21,12 @@ func main() {
 	log.Fatal(http.ListenAndServe(addr, nil))
 }
 
+func Handler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	fmt.Fprintf(w, "<html><head>%s</head></html>", getMetaTag(vars["name"]))
+}
+
 func getMetaTag(name string) string {
-	return fmt.Sprintf("<meta name=\"go-import\" content=\"gopkg.iprod.activestate.com/%s git ssh://gitolite@gitolite.activestate.com/%s\">",
+	return fmt.Sprintf("<meta name=\"go-import\" content=\"go.stacka.to/%s git ssh://gitolite@gitolite.activestate.com/%s\">",
 		name, name)
 }

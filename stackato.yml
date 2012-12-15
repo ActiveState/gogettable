@@ -1,4 +1,5 @@
-name: gopkg
+# deploy to stacka.to
+name: go
 
 framework: buildpack
 
