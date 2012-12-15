@@ -1,4 +1,4 @@
-# deploy to stacka.to
+# example: deploy to go.company.com
 name: go
 
 framework: buildpack
