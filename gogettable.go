@@ -28,6 +28,9 @@ func main() {
 	router.HandleFunc("/{name}", Handler)
 	router.HandleFunc("/{name}/{y}", Handler)
 	router.HandleFunc("/{name}/{y}/{z}", Handler)
+	router.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "See https://github.com/ActiveState/gogettable\n")
+	})
 	http.Handle("/", router)
 
 	addr := ":" + os.Getenv("PORT")
