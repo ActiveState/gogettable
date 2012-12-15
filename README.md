@@ -16,3 +16,7 @@ To allow a set of internal git repos to be namespaced at "go.stackato.to/..." so
     <html><head><meta name="go-import" content="go.stacka.to/foo git ssh://gitolite@gitolite.activestate.com/foo.git"></head></html>
 
 If the repo is public, you could also submit it to services like [godoc.org](http://godoc.org/)
+
+# Deploying
+
+After changing the `Procfile` to suit your needs, you can deploy this app directly to Stackato or Heroku.
