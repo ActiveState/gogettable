@@ -2,18 +2,22 @@ A simple web app to provide `go get` [the manifest](http://golang.org/cmd/go/#Re
 
 # Example
 
-To allow a set of internal git repos to be namespaced at "go.stackato.to/..." so that the following may work:
+To allow a set of internal git repos to be namespaced at "code.example.com/..." so that the following may work:
 
-    $ go get go.stacka.to/stackato-go
+    $ go get code.example.com/mypkg
 
 .. run this app as:
 
-    $ gogettable -import go.stacka.to -repo ssh://gitolite@gitolite.activestate.com/%s.git
+    $ gogettable -import code.example.com -repo ssh://git@git.example.com/%s.git
+    
+and serve it from the domain "code.example.com".
 
 `go get` will then retrieve the manifest as:
 
-    $ curl http://go.stacka.to/foo/bar
-    <html><head><meta name="go-import" content="go.stacka.to/foo git ssh://gitolite@gitolite.activestate.com/foo.git"></head></html>
+    $ curl http://code.example.com/mypkg/subpkg
+    <html><head>
+    <meta name="go-import" content="code.example.com/mypkg git ssh://git@git.example.com.com/mypkg.git">
+    </head></html>
 
 If the repo is public, you could also submit it to services like [godoc.org](http://godoc.org/)
 
